@@ -29,6 +29,7 @@ from math import log
 import json
 import operator
 
+
 # 计算信息熵
 def calcShannonEnt(dataSet):
     # 先计算概率
@@ -102,11 +103,11 @@ def majorityCnt(dataSet):
     for vote in dataSet:
         if vote not in classCount.keys(): classCount[vote] = 0
         classCount[vote] += 1
-    sortedClassCount =  sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
+    sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
     return sortedClassCount[0][0]
 
 
-# 创建数
+# 创建树
 def createTree(dataSet, labels):
     # 获取dataSet中所有的分类
     classList = [example[-1] for example in dataSet]
@@ -123,7 +124,7 @@ def createTree(dataSet, labels):
     bestFeature = chooseBestFeatureToSplit(dataSet)
     bestLabel = labels[bestFeature]
 
-    myTree = {bestLabel:{}}
+    myTree = {bestLabel: {}}
     # 删除已经筛选过的标签
     del(labels[bestFeature])
 
@@ -143,7 +144,6 @@ def createDataSet():
         [1, 0, 'no'],
         [0, 1, 'no'],
         [0, 1, 'no'],
-        [0, 1, 'maybe'],
     ]
 
     labels = ['no surfacing', 'flippers']
@@ -162,7 +162,7 @@ def classify(inputTree, featLables, testVec):
     # 获取根节点的子树
     secondDict = inputTree[firstStr]
     featIndex = featLables.index(firstStr)
-
+    classLabel = None
     for key in secondDict.keys():
         if testVec[featIndex] == key:
             # 继续迭代
@@ -179,8 +179,8 @@ myDat, labels = createDataSet()
 treeLabels = labels[:]
 # 根据每个特征进行创建树
 myTree = createTree(myDat, treeLabels)
-print(labels)
+print(json.dumps(myTree))
 #
-result = classify(myTree, labels, [1, 0])
+result = classify(myTree, labels, [0, 1])
 print(result)
 # 获取当前数据中所有标签的信息熵

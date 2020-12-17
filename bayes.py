@@ -22,9 +22,15 @@
    那么上面的公式就改为了
      p(敏感|词条) = p(词条|敏感) * p(敏感) / p(词条)
 
+     我们这里需要求
+        p(敏感) = p(敏感文档数)  = count(敏感文档) / count(所有文档)
+        p(词条|敏感) = p(词条|敏感文档) =  p(敏感文档的中词条个数) / p(敏感文档中的所有词个数)
+           表示敏感文档中出现目标词条的概率，就是 目标词条数 / 所有敏感文档中的所有词条数，
 
-2. 确认每个词汇在文档中出现的概率(p1, p2, p3... pk),
+
+2. 确认每个词汇在文档中出现的敏感概率(p1, p2, p3... pk),
    然后计算每个文档的类别概率: p(class) = p1 * p2 * p3 ... * pk
+   然后判断哪个概率比较大，就是哪个类别
 
 3. 在相乘的时候，会出现两个问题
     (1)即 有可能某一个pn的概率为0，导致最后的乘机为0， 解决方案：每个词汇表出现的次数初始化为1,分母为2
@@ -67,7 +73,7 @@ def setOfWords2Vec(vocabList, setOfWords):
     for word in setOfWords:
         if word in vocabList:
             # 这里使用的是词集模型
-            returnVec[vocabList.index(word)] = 1
+            returnVec[vocabList.index(word)] += 1
         else:
             print('this word is not in vocab list')
     return returnVec
@@ -104,11 +110,12 @@ def trainNBC(trainMatrix, trainCategory):
         if trainCategory[i] == 1:
             # 单个词汇数相加
             p1Num += trainMatrix[i]
-            # 所有词汇数相加
+            # 敏感文档中的所有词汇数相加
             p1Denom += sum(trainMatrix[i])
         else:
             # 计算正常文档，词汇数
             p0Num += trainMatrix[i]
+            # 正常文档中的所有词汇数相加
             p0Denom += sum(trainMatrix[i])
 
     # p0Vec表示每个词汇在正常文档出现的概率
@@ -119,6 +126,7 @@ def trainNBC(trainMatrix, trainCategory):
     return p0Vec, p1Vec, pAbusive
 
 
+# 将所有词的概率相加，然后乘以类别的概率
 def classifyNBC(classifyVec, p0Vec, p1Vec, pclass):
     # 敏感文档分类的概率
     p1 = sum(p1Vec * classifyVec) + np.log(pclass)
@@ -158,4 +166,4 @@ def testNBC():
     print(classifyClass1)
 
 
-testNBC()
+# testNBC()

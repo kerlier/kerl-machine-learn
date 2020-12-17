@@ -70,13 +70,6 @@ def file2matrix(filepath):
 # 0-1公式: (当前值-最小值)/(最大值-最小值)
 # 使用numpy，必须不要使用for循环
 def autoNorm(dataSet):
-    # for y in range(dataSet.shape[1]):
-    #     xVector = dataSet[:, y]
-    #     print(xVector.max())
-    #     for x in range(dataSet.shape[0]):
-    #         oldValue = dataSet[x, y]
-    #         newValue = (oldValue - xVector.min()) / (xVector.max() - xVector.min())
-    #         dataSet[x, y] = newValue
     # 获取所有列的最小值, 这里求的都是近似值
     # print(dataSet.min(0))
     minVals = dataSet.min(0)

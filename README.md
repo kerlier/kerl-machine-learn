@@ -57,6 +57,7 @@
 *****2.1 只导出安装包信息*****：
 
 `pip freeze > requirements.txt`
+
 ![pipFreeze](./img/pip-freeze.png)
 
 *****2.2 导出安装包whl文件*****：

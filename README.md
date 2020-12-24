@@ -167,6 +167,71 @@
 
 
 
+*****5.Model*****
+
+******5.1安装依赖******
+
+1. 安装pymysql依赖包
+
+   `pip install pymysql`
+2. 在项目同名根目录的_init_.py添加如下代码:
+
+![initMySql](./img/mysql_init.png)
+
+******5.2配置参数******
+
+在项目同名目录下settings.py追加如下代码(需要提前创建数据库):
+
+![mysqlConfig](./img/polls-model-database.png)
+
+******5.3生成MODEL类******
+
+在具体应用下面的models.py定义class类,我这里的应用是polls。
+在polls目录下的models.py追加如下代码:
+
+![questionModel](./img/question_model.png)
+
+Django中的model类需要继承models.Model类。
+
+具体FiledType参考
+`https://docs.djangoproject.com/zh-hans/2.0/ref/models/fields/`
+ 
+
+******5.4生成数据库表******
+
+ (1) 生成数据库表的命令是
+
+`python manage.py migrate`
+
+注意：migrate 命令只会为在 INSTALLED_APPS 里声明了的应用进行数据库迁移。
+
+
+
+ (2)在项目同名根目录下的settings.py文件追加如下代码：
+ 
+ ![installedApps](./img/installed_apps_config.png)
+ 
+ (3) 进行迁移
+ 
+    生成迁移文件 makemigrations
+    
+ ![makemigrations](./img/makemigrations.png)
+     
+     真正迁移
+     
+ ![migrate](./img/migrete.png)
+ 
+ (4)查看数据库中的表
+ 
+   会生成自身需要的表
+  ![tables](./img/tables.png)
+    
+ 
+  (5) 注意，每次在models中新增字段的时候，都需要重新执行第三步
+
+
+
+
 
 
 

@@ -148,6 +148,7 @@
 *******4.4.1 GET*******
 
 在polls/views.py中追加如下代码
+
 ![pollViewsDetail](./img/polls-views-detail.png)
 
 在polls/urls.py中追加如下代码:

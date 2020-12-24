@@ -88,6 +88,7 @@
 
 `pip install *.whl
 `
+
 需要预先下载tar包
 `pip install Flask-WTF-0.10.0.tar.gz
 `

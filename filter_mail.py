@@ -4,6 +4,7 @@
 import bayes
 import numpy as np
 
+
 def textParse(bigString):
     import re
     listOfTokens = re.split(r'\W*', bigString)
@@ -53,10 +54,9 @@ def spamTest():
 
     # 训练贝叶斯
     p0Vec, p1Vec, pAbusive = bayes.trainNBC(docMartix, classList)
-    print(p1Vec)
-    print(p0Vec)
-    print(pAbusive)
-
+    # print(p1Vec)
+    # print(p0Vec)
+    # print(pAbusive)
     # 测试函数
     i = 0
     errorCount = 0

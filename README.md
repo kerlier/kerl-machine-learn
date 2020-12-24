@@ -142,6 +142,30 @@
 在项目中同名的根目录下的urls.py追加如下代码：
 ![rootUrls](./img/root-urls.png)
 
+******4.4******
+接收参数
+
+*******4.4.1 GET*******
+
+在polls/views.py中追加如下代码
+![pollViewsDetail](./img/polls-views-detail.png)
+
+在polls/urls.py中追加如下代码:
+![pollUrlsDetail](./img/polls-urls-detail.png)
+
+其中,int是参数的数据类型,question_id对应views方法的参数名
+
+*******4.4.1 POST*******
+
+在polls/views.py追加如下代码:
+![pollsPost](./img/polls_request_post.png)
+
+在polls/urls.py追加如下代码：
+![pollsUrlPost](./img/poll-urls-post.png)
+
+其中json是一个模块,需要import json
+
+
 
 
 

@@ -136,10 +136,12 @@
 
 ******4.2******
 在polls目录下,新建urls.py文件,并追加如下代码：
+
 ![pollsUrls](./img/polls-urls.png)
 
 ******4.3******
 在项目中同名的根目录下的urls.py追加如下代码：
+
 ![rootUrls](./img/root-urls.png)
 
 ******4.4******
@@ -148,9 +150,11 @@
 *******4.4.1 GET*******
 
 在polls/views.py中追加如下代码
+
 ![pollViewsDetail](./img/polls-views-detail.png)
 
 在polls/urls.py中追加如下代码:
+
 ![pollUrlsDetail](./img/polls-urls-detail.png)
 
 其中,int是参数的数据类型,question_id对应views方法的参数名
@@ -158,6 +162,7 @@
 *******4.4.1 POST*******
 
 在polls/views.py追加如下代码:
+
 ![pollsPost](./img/polls_request_post.png)
 
 在polls/urls.py追加如下代码：

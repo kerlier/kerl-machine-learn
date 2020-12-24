@@ -236,8 +236,20 @@ Django中的model类需要继承models.Model类。
 
 
 
+******5.5 实际应用******
+
+*******5.5.1 保存数据*******
+
+在polls/views.py文件中追加如下代码:
+
+![saveQuestion](./img/saveQuestion.png)
 
 
+*******5.5.2 查询数据*******
+
+在polls/views.py文件追加如下代码:
+
+![getQuestionById](./img/getById.png)
 
 
-
+![page](./img/page1.png)

@@ -253,3 +253,12 @@ Django中的model类需要继承models.Model类。
 
 
 ![page](./img/page1.png)
+
+
+
+*******5.5.3 导出以及导入数据*******
+
+conda env export > environment.yaml // 导出当前环境的包信息
+
+conda env create -f environment.yaml // 用配置文件创建新的虚拟环境
+
